@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .fun {
+            margin: 50px auto;
+            width: 1000px;
+            display: grid;
+            gap: 50px;
+            grid-template-columns: repeat(3, 1fr);
+            font-family: sans-serif;
+        }
+        .card {
+            padding: 30px;
+            box-shadow: 0 0 5px #000;
+            text-align: center;
+        }
+        .user {
+            margin-top: 20px;
+            color: orangered;
+        }
+    </style>
+</head>
+<body>
+    <div class="fun"></div>
+    <!-- <script src="script.js"></script> -->
+    <!-- <script src="users.js"></script> -->
+    <!-- <script src="usersPromises.js"></script> -->
+    <script>
+        // AJAX - Async JavaScript and XML
+        fetch("https://fakerapi.it/api/v1/credit_cards?_quantity=9")
+            // .then(ans => {
+            //     // console.log(ans);
+            //     return ans.json();
+            // })
+            .then(ans => ans.json())
+            .then(result => {
+                console.log(result);
+                let html = "";
+                result.data.forEach(el => {
+                    html += `<div class="card">
+                        <div class="number">${el.number}</div>
+                        <div class="user">${el.owner}</div>
+                    </div>`;
+                });
+                document.querySelector(".fun").innerHTML += html;
+            });
+    </script>
+</body>
+</html>
