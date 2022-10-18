@@ -112,3 +112,20 @@ body {
 .popup-wrapper.active {
     display: flex;
 }
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+h2 {
+    margin: 0;
+}
+
+.popup h2 {
+    margin-bottom: 30px;
+}
