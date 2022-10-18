@@ -51,6 +51,8 @@ body {
     background-color: silver;
     border-radius: 8px;
     grid-row-end: span 2;
+    background-size: cover;
+    background-position: center;
 }
 .card>.name {
     grid-column-end: span 2;
