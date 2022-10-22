@@ -38,7 +38,7 @@ const showPopup = (list, type, content) => {
     el.parentElement.classList.add("active");
 }
 
-const addCat = (e, api, popupList) => {
+const addCat = (e, api, popupList, store) => {
     e.preventDefault();
     let body = {}; // {name: "Vasya", id: 1, ...}
     for (let i = 0; i < e.target.elements.length; i++) {
@@ -56,9 +56,15 @@ const addCat = (e, api, popupList) => {
     api.addCat(body)
         .then(res => res.json())
         .then(data => {
+            console.log(data.message);
             if (data.message === "ok") {
+                // localStorage.setItem("cat", JSON.stringify(body));
+                createCard(body, document.querySelector(".container"));
+                store.push(body);
+                localStorage.setItem("cats", JSON.stringify(store));
                 e.target.reset();
+                document.querySelector(".popup-wrapper").classList.remove("active");
             }
-            showPopup(popupList, "info", data.message);
+            // showPopup(popupList, "info", data.message);
         })
 }

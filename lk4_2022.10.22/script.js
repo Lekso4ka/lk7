@@ -17,26 +17,39 @@ const container = document.querySelector(".container");
 const btn = document.querySelector(".dashboard").firstElementChild;
 const popupList = document.querySelectorAll(".popup");
 const popBox = document.querySelector(".popup-wrapper");
+
+let catsList = localStorage.getItem("cats");
+if (catsList) {
+    catsList = JSON.parse(catsList);
+}
+console.log(catsList);
+
 const addForm = document.forms.add;
 addForm.addEventListener("submit", function(e) {
-    addCat(e, api, Array.from(popupList));
+    addCat(e, api, Array.from(popupList), catsList);
 });
 
-api.getCats()
-    .then(res => res.json())
-    .then(data => {
-        console.log(data);
-        if (data.message === "ok") {
-            data.data.forEach(cat => {
-                createCard(cat, container, Array.from(popupList));
-            });
-        } else {
-            showPopup(Array.from(popupList), "info", data.message);
-        }
-        // showPopup(Array.from(popupList), "info", data.message);
+if (!catsList) {
+    api.getCats()
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if (data.message === "ok") {
+                localStorage.setItem("cats", JSON.stringify(data.data));
+                data.data.forEach(cat => {
+                    createCard(cat, container, Array.from(popupList));
+                });
+            } else {
+                showPopup(Array.from(popupList), "info", data.message);
+            }
+            // showPopup(Array.from(popupList), "info", data.message);
+        });
+
+} else {
+    catsList.forEach(cat => {
+        createCard(cat, container, Array.from(popupList));
     });
-
-
+}
 
 popupList.forEach(p => {
     p.firstElementChild.addEventListener("click", e => {
