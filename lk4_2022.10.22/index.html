@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="func.js"></script>
+</head>
+<body>
+    <!-- nav.dashboard>.btn*5^main.container>.card*6>.pic+.age+.rate+.name -->
+    <nav class="dashboard">
+        <div class="btn"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+    </nav>
+    <main class="container">
+        <!-- <div class="card">
+            <div class="pic"></div>
+            <div class="age">10</div>
+            <div class="rate">
+                <span>☆</span>
+                <span>☆</span>
+                <span>☆</span>
+                <span>☆</span>
+                <span>☆</span>
+            </div>
+            <div class="name">Vasya</div>
+        </div> -->
+    </main>
+    <div class="popup-wrapper active">
+        <div class="popup" data-type="card">
+            <div class="close">+</div>
+            <div class="content"></div>
+        </div>
+        <div class="popup active" data-type="add">
+            <div class="close">+</div>
+            <div class="content">
+                <h2>Добавить кота</h2>
+                <!-- 
+                    id: 32,
+                    name: "Кот",
+                    img_link: "https://mindset-potential.com/wp-content/uploads/2022/05/0pexels-photo-1870376.jpeg.jpg&quot;,
+                    age: 1,
+                    rate: 10,
+                    description: "Просто потому что =)",
+                    favourite: true
+                 -->
+                <form>
+                    <!-- .row*7>label[for=i$]+input#i$ -->
+                    <div class="row">
+                        <label for="i1">Имя котика</label>
+                        <input type="text" id="i1" name="name" required></div>
+                    <div class="row">
+                        <label for="i2">Порядковый номер</label>
+                        <input type="number" id="i2" name="id" required min="1">
+                    </div>
+                    <div class="row">
+                        <label for="i3">Ссылка на картинку</label>
+                        <input type="text" id="i3" name="img_link">
+                    </div>
+                    <div class="row">
+                        <label for="i4">Возраст</label>
+                        <input type="number" id="i4" name="age" min="0" max="100">
+                    </div>
+                    <div class="row">
+                        <label for="i5">Рейтинг</label>
+                        <input type="range" id="i5" name="rate" min="0" max="10" value="10">
+                    </div>
+                    <div class="row">
+                        <label for="i6">
+                            <input type="checkbox" id="i6" name="favourite">
+                            Любимчик
+                        </label>
+                    </div>
+                    <div class="row">
+                        <label for="i7">Описание</label>
+                        <textarea id="i7" name="description"></textarea>
+                    </div>
+                    <button type="submit">Добавить котика</button>
+                </form>
+            </div>
+        </div>
+        <div class="popup" data-type="info">
+            <div class="close">+</div>
+            <div class="content">
+                <h2>Внимание!</h2>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!-- 
+    TODO: рейтинг в виде звездочек
+    popup
+ -->
