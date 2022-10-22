@@ -4,17 +4,23 @@ let user = document.cookie;
 console.log("u", user);
 if (!user) {
     user = prompt("Пользователь не найден, укажите имя пользователя", "lekso4ka");
+    document.cookie = `user=${user}`;
 } else {
     user = user.split("=")[1];
 }
-document.cookie = `user=${user}`;
 
-const api = new Api("lekso4ka");
+const api = new Api(user);
+
+// "user=lekso4ka;goods=apple,orange,pinapple;date=2022-10-11"
 
 const container = document.querySelector(".container");
 const btn = document.querySelector(".dashboard").firstElementChild;
 const popupList = document.querySelectorAll(".popup");
 const popBox = document.querySelector(".popup-wrapper");
+const addForm = document.forms.add;
+addForm.addEventListener("submit", function(e) {
+    addCat(e, api, Array.from(popupList));
+});
 
 api.getCats()
     .then(res => res.json())

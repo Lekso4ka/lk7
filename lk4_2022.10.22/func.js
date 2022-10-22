@@ -37,3 +37,28 @@ const showPopup = (list, type, content) => {
     el.classList.add("active");
     el.parentElement.classList.add("active");
 }
+
+const addCat = (e, api, popupList) => {
+    e.preventDefault();
+    let body = {}; // {name: "Vasya", id: 1, ...}
+    for (let i = 0; i < e.target.elements.length; i++) {
+        let el = e.target.elements[i];
+        // console.log(el);
+        if (el.name) {
+            if (el.type === "checkbox") {
+                body[el.name] = el.checked;
+            } else if (el.value) {
+                body[el.name] = el.value;
+            }
+        }
+    }
+    console.log(body);
+    api.addCat(body)
+        .then(res => res.json())
+        .then(data => {
+            if (data.message === "ok") {
+                e.target.reset();
+            }
+            showPopup(popupList, "info", data.message);
+        })
+}
