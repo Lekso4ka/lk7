@@ -1,9 +1,22 @@
+import Api from "./api.js"; // ./ - указатель на текущую папку
+
+let user = document.cookie;
+console.log("u", user);
+if (!user) {
+    user = prompt("Пользователь не найден, укажите имя пользователя", "lekso4ka");
+} else {
+    user = user.split("=")[1];
+}
+document.cookie = `user=${user}`;
+
+const api = new Api("lekso4ka");
+
 const container = document.querySelector(".container");
 const btn = document.querySelector(".dashboard").firstElementChild;
 const popupList = document.querySelectorAll(".popup");
 const popBox = document.querySelector(".popup-wrapper");
 
-fetch("https://sb-cats.herokuapp.com/api/2/lekso4ka/show")
+api.getCats()
     .then(res => res.json())
     .then(data => {
         console.log(data);
