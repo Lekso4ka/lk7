@@ -1,0 +1,22 @@
+footer {
+    background-color: var(--main-color);
+    padding: 16px calc(50% - 500px);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 1060px) {
+    footer {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+.contacts {
+    grid-row: 1 / span 4;
+    grid-column-start: 4;
+}
+footer>.logo {
+    grid-row: 1 / span 3;
+}
+.copy {
+    grid-row-start: 4
+}

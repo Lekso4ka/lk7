@@ -1,0 +1,24 @@
+:root {
+	--main-color: #ffe44d;
+}
+body {
+	margin: 0;
+	font-family: "Nunito", "Arial", "Helvetica", sans-serif;
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
+.wrapper {
+	min-height: 100vh;
+	/* background-color: beige; */
+}
+
+.cards-container {
+	max-width: 1000px;
+	margin: auto;
+	padding: 30px;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 30px;
+}
